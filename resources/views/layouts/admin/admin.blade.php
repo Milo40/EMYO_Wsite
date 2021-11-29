@@ -16,8 +16,8 @@
 </head>
 
 <body>
-     <!-- ***** Preloader Start ***** -->
-     <div id="js-preloader" class="js-preloader">
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
         <div class="preloader-inner">
             <span class="dot"></span>
             <div class="dots">
@@ -80,14 +80,17 @@
                                             class="dropdown-menu dropdown-menu-right">
                                             <button type="button" tabindex="0" class="dropdown-item">Mon
                                                 profil</button>
-                                            <button type="button" tabindex="0"
-                                                class="dropdown-item">Déconnexion</button>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit" tabindex="0"
+                                                    class="dropdown-item">Déconnexion</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        Name
+                                        {{ Auth::user()->name }}
                                     </div>
                                 </div>
                             </div>
@@ -216,7 +219,7 @@
 
 
 
-                            
+
                             <li>
                                 <a href="#">
                                     <i class="metismenu-icon fas fa-users" style="font-size: 15px;"></i>
@@ -302,9 +305,7 @@
     <script type="text/javascript" src="/assets/scripts/jquery.js"></script>
     <script type="text/javascript" src="/assets/scripts/main.js"></script>
     <script>
-
-        CKEDITOR.replace( 'exampleText' );
-
+        CKEDITOR.replace('exampleText');
     </script>
 </body>
 

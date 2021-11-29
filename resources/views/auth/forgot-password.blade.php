@@ -1,11 +1,16 @@
 <x-guest-layout>
     <x-jet-authentication-card>
+        @section('titre')
+
+        Mot de passe oublié
+            
+        @endsection
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <center> <a href="/dashboard"><img src="/assets/images/emyo.png" alt="logo" style="width:30%;margin-bottom:-45px;"></a></center>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+          Mot de passe oublié ? Pas de soucis.Veuillez juste entrer votre adresse email. Nous vous enverrons un lien pour le réinitialiser.
         </div>
 
         @if (session('status'))
@@ -20,14 +25,14 @@
             @csrf
 
             <div class="block">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-label for="email" value="Email" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-jet-button>
+            <div class="text-center m-3">
+                <button class="btn btn-primary">
+                    M'envoyer le lien de réinitialisation
+                </button>
             </div>
         </form>
     </x-jet-authentication-card>

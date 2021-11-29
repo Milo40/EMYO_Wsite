@@ -128,3 +128,21 @@ preloader
     background: #007bff;
     border-radius: 50%;
 }
+
+.list-inside{
+    list-style: none;
+    color:#71132a;background-color:#f7d3dc;border-color:#f4c2ce;
+    text-align: center;
+    padding:20px;
+}
+
+.font-medium.text-red-600{
+
+    display: none;
+}
+
+.font-medium.text-sm.text-green-600{
+    color:#1e6641;background-color:#d8f3e5;border-color:#c8eedb;
+    text-align: center;
+    padding:20px;
+}
