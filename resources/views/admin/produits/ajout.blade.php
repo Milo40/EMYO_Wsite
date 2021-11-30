@@ -20,6 +20,11 @@ Ajouter un produit
 
 @section('content')
 
+@include('status_messages')
+
+<form class="add_product_form" method="POST" action="{{ url()->current() }}">
+    @csrf
+
     <div class="row">
 
         <div class="col-lg-12">
@@ -42,12 +47,13 @@ Ajouter un produit
                             </select>
 
                         </div>
-                        <button class="mt-1 btn btn-primary">Enregistrer</button>
+                        <button type="submit" class="mt-1 btn btn-primary">Enregistrer</button>
                     </form>
                 </div>
             </div>
         </div>
         
     </div>
+</form>
 
 @endsection

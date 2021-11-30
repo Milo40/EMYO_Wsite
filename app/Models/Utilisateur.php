@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Utilisateur extends Model
 {
     use HasFactory;
+    protected $table = 'utilisateur';
 
     public function article(){
         return $this->hasOne(Article::class);

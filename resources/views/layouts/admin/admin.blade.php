@@ -11,6 +11,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <link href="/assets/styles/main.css" rel="stylesheet">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}">
     <link rel="shortcut icon" href="/assets/images/emyo.png">
     <script src="/assets/ckeditor/ckeditor.js"></script>
 </head>
@@ -138,7 +139,7 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Menu</li>
                             <li>
-                                <a href="">
+                                <a href="{{ route('dashboard') }}">
                                     <i class="metismenu-icon far fa-clipboard" style="font-size: 15px;"></i>
                                     Tableau de bord
                                 </a>
@@ -153,13 +154,13 @@
                                 <ul>
 
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('Ajouter un article') }}">
                                             <i class="metismenu-icon">
                                             </i>Ajouter un article
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('Tous les articles') }}">
                                             <i class="metismenu-icon">
                                             </i>Liste d'articles
                                         </a>
@@ -178,13 +179,13 @@
                                 <ul>
 
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('Ajouter une categorie') }}">
                                             <i class="metismenu-icon">
                                             </i>Ajouter une catégorie
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="elements-utilities.html">
+                                        <a href="{{ route('Toutes les categories') }}">
                                             <i class="metismenu-icon">
                                             </i>Liste de Catégories
                                         </a>
@@ -203,13 +204,13 @@
                                 <ul>
 
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('Ajouter un produit') }}">
                                             <i class="metismenu-icon">
                                             </i>Ajouter un produit
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('Tous les produits') }}">
                                             <i class="metismenu-icon">
                                             </i>Liste de produits
                                         </a>
@@ -230,13 +231,13 @@
                                 <ul>
 
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('Ajouter un utilisateur') }}">
                                             <i class="metismenu-icon">
                                             </i>Ajouter un utilisateur
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('Tous les utilisateurs') }}">
                                             <i class="metismenu-icon">
                                             </i>Liste d'utilisateurs
                                         </a>
@@ -249,7 +250,7 @@
 
 
                             <li>
-                                <a href="#">
+                                <a href="{{ route('Tous les messages') }}">
                                     <i class="metismenu-icon fas fa-mail-bulk" style="font-size: 15px;"></i>
                                     Messages
                                 </a>
@@ -258,7 +259,7 @@
 
 
                             <li>
-                                <a href="#">
+                                <a href="{{ route('Toutes les reservations') }}">
                                     <i class="metismenu-icon fas fa-lock" style="font-size: 15px;"></i>
                                     Reservations
                                 </a>
@@ -266,7 +267,7 @@
                             </li>
 
                             <li>
-                                <a href="#">
+                                <a href="{{ route('Toutes les ventes') }}">
                                     <i class="metismenu-icon fas fa-cash-register" style="font-size: 15px;"></i>
                                     Ventes
                                 </a>

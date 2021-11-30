@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     use HasFactory;
+    protected $table = 'reservation';
 
     public function produit(){
         return $this->hasMany(Produit::class);

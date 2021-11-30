@@ -20,6 +20,11 @@ Ajouter un utilisateur
 
 @section('content')
 
+@include('status_messages')
+
+<form class="add_user_form" method="POST" action="{{ url()->current() }}">
+    @csrf
+
     <div class="row">
 
         <div class="col-lg-12">
@@ -43,7 +48,7 @@ Ajouter un utilisateur
                         <div class="position-relative form-group"><label for="example4" class="">Mot de passe</label><input name="password" id="example4"  type="password" class="form-control"></div>
     
                         <div class="position-relative form-group"><label for="example5" class="">Confirmation du mot de passe</label><input name="repassword" id="example5"  type="password" class="form-control"></div>
-                        <button class="mt-1 btn btn-primary">Enregistrer</button>
+                        <button type="submit" class="mt-1 btn btn-primary">Enregistrer</button>
                     </form>
                 </div>
             </div>
@@ -51,5 +56,6 @@ Ajouter un utilisateur
         
         
     </div>
+</form>
 
 @endsection

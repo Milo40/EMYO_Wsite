@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vente extends Model
 {
     use HasFactory;
+    protected $table = 'vente';
 
     public function utilisateur(){
         return $this->belongsToMany(Utilisateur::class);
