@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vente;
 use Illuminate\Http\Request;
 
 class VenteController extends Controller
@@ -10,7 +11,11 @@ class VenteController extends Controller
         return view('admin/ventes');
     }
     public function get_ventes(){
-        return view('admin/ventes');
+        $ventes = Vente::all();
+        $vente_client = "";
+        $vente_produit = "";
+
+        return view('admin/ventes', compact('ventes', 'vente_client', 'vente_produit'));
     }
     public function get_vente(){
         return view('admin/ventes');
