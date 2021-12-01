@@ -20,6 +20,7 @@ class CreateReservationTable extends Migration
             $table->string('mail_client', 255)->nullable();
             $table->integer('numero_client')->nullable();
             $table->string('nom_client', 255)->nullable();
+            $table->unsignedBigInteger('produit_id')->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,8 @@ class CreateVenteTable extends Migration
         Schema::create('vente', function (Blueprint $table) {
             $table->unsignedBigInteger('id_vente')->autoIncrement();
             $table->date('date')->defaultValue('01/01/2022')->nullable();
+            $table->unsignedBigInteger('produit_id')->nullable();
+            $table->unsignedBigInteger('utilisateur_id')->nullable();
             $table->timestamps();
         });
     }
