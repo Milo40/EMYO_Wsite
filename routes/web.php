@@ -27,9 +27,28 @@ Les plus detaillees sont celles des administrateurs. Mais je crois que celles la
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/galery', function () {
+    return view('galery');
+});
+
+Route::get('/blog', function () {
+    return view('blog');
+});
+
+Route::get('/article', function () {
+    return view('article');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])-> group(function(){
 
