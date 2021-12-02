@@ -20,6 +20,7 @@ class CreateProduitTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->boolean('is_reserve')->nullable()->default(false);
+            $table->unsignedBigInteger('utilisateur_id')->nullable();
             $table->timestamps();
         });
     }

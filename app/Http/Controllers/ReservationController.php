@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -10,7 +11,9 @@ class ReservationController extends Controller
         return view('admin/reservations');
     }
     public function get_reservations(){
-        return view('admin/reservations');
+        $reservs = Reservation::all();
+
+        return view('admin/reservations', compact('reservs'));
     }
     public function get_reservation(){
         return view('admin/reservations');
@@ -18,8 +21,12 @@ class ReservationController extends Controller
     public function add_reservation(){
         return view('admin/reservations');
     }
-    public function delete_reservation(){
-        return view('admin/reservations');
+    public function delete_reservation(Request $req){
+        $reserv = $req->request->get('reserv');
+        //dd($msg);
+        Reservation::where('id_reservation', $reserv)->delete();
+
+        return back()->with('success', 'Reservation Supprimee !');
     }
     public function edit_message(){
         return view('admin/reservations');
