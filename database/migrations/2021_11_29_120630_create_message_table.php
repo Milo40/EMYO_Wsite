@@ -17,7 +17,7 @@ class CreateMessageTable extends Migration
             $table->unsignedBigInteger('id_message')->autoIncrement();
             $table->string('contenu', 255)->nullable();
             $table->string('email', 255)->nullable();
-            $table->integer('numero')->nullable();
+            $table->string('nom')->nullable();
             $table->string('sujet', 255)->nullable();
             $table->timestamps();
         });

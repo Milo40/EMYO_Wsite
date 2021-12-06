@@ -11,8 +11,8 @@ active
     <div class="container">
       <div class="row no-gutters slider-text align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
-          <h1 class="mb-3 bread">titre</h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="/">Acceuil <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/blog">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>titre <i class="ion-ios-arrow-forward"></i></span></p>
+          <h1 class="mb-3 bread">{{$article->titre}}</h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="/">Acceuil <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/blog">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>{{$article->titre}} <i class="ion-ios-arrow-forward"></i></span></p>
         </div>
       </div>
     </div>
@@ -23,58 +23,40 @@ active
       <div class="row">
         <div class="col-lg-8 ftco-animate">
             <p>
-            <img src="/index/images/image_1.jpg" alt="" class="img-fluid">
+            <img src="/storage/articles/{{$article->banniere}}" alt="banniere" class="img-fluid">
           </p>
-          <h2 class="mb-3">It is a long established fact a reader be distracted</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
-          <p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-         
-
+          <h2 class="mb-3">{{$article->titre}}</h2>
+          {!!$article->contenu!!}
         </div> <!-- .col-md-8 -->
         <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
           <div class="sidebar-box">
-            <form action="#" class="search-form">
-              <div class="form-group">
-                <span class="icon icon-search"></span>
-                <input type="text" class="form-control" placeholder="Recherche">
-              </div>
+            <form action="/recherche" method="post" class="search-form">
+              @csrf
+                
+                <input type="text" name="titre" class="form-control" placeholder="Entrez le titre de l'article">
+              
             </form>
           </div>
           <div class="sidebar-box ftco-animate">
-            <h3>Recent Blog</h3>
+            <h3>Articles Récents</h3>
+            @forelse ($articles as $art)
             <div class="block-21 mb-4 d-flex">
               <a class="blog-img mr-4" style="background-image: url(/index/images/image_1.jpg);"></a>
               <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                <h3 class="heading"><a href="/article/{{$art->id_article}}">{{$art->titre}}</a></h3>
                 <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> Jan. 24, 2020</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  <div><span class="icon-calendar"></span> {{$art->created_at->translatedFormat('M')}}. {{$art->created_at->format('d')}}, {{$art->created_at->format('Y')}}</div>
+                  <div><span class="icon-person"></span> Admin</div>
                 </div>
               </div>
             </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(/index/images/image_2.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> Jan. 24, 2020</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(/index/images/image_3.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> Jan. 24, 2020</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                </div>
-              </div>
-            </div>
+
+            @empty
+
+            Rien à afficher
+                
+            @endforelse
+
           </div>
         </div>
 
@@ -87,6 +69,6 @@ active
 
 @section('title')
 
-Article
+{{$article->titre}}
     
 @endsection

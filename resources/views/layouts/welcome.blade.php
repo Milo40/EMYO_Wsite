@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="/index/css/flaticon.css">
 	<link rel="stylesheet" href="/index/css/icomoon.css">
 	<link rel="stylesheet" href="/index/css/style.css">
+    @yield('style')
 </head>
 
 <body>
@@ -43,18 +44,12 @@
             <div class="col-md-8 order-md-last">
                 <div class="row">
                     <div class="col-md-6 text-center">
-                        <a class="navbar-brand" href=""><img src="/index/images/emyo.png" alt="logo"
+                        <a class="navbar-brand" href="/"><img src="/index/images/emyo.png" alt="logo"
                                 style="margin:-100px;width:150px;"></a>
                     </div>
-                    <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
-                        <form action="#" class="searchform order-lg-last">
-                            <div class="form-group d-flex">
-                                <input type="text" class="form-control pl-3" placeholder="Recherche">
-                                <button type="submit" placeholder="" class="form-control search"><span
-                                        class="fa fa-search"></span></button>
-                            </div>
-                        </form>
-                    </div>
+                    <div class="col-md-6 d-none d-md-flex justify-content-end mb-md-0 mb-3">
+                      <a href="/contact"><button class="btn btn-primary"> <i class="fas fa-mail-bulk"></i> Nous contacter</button></a>
+                       </div>
                 </div>
             </div>
             <div class="col-md-4 d-flex">
@@ -74,6 +69,8 @@
             </div>
         </div>
     </div>
+
+
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container-fluid">
     
@@ -84,14 +81,17 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item @yield('home')"><a href="/" class="nav-link">Acceuil</a></li>
-                    <li class="nav-item @yield('about')"><a href="/about" class="nav-link">A propos</a></li>
-                    <li class="nav-item @yield('galery')"><a href="/galery" class="nav-link">Galerie</a></li>
+                    <li class="nav-item @yield('about')"><a href="/a-propos" class="nav-link">A propos</a></li>
+                    <li class="nav-item @yield('galery')"><a href="/galerie" class="nav-link">Galerie</a></li>
                     <li class="nav-item @yield('blog')"><a href="/blog" class="nav-link">Blog</a></li>
                     <li class="nav-item @yield('contact')"><a href="/contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item @yield('boutique')"><a href="/boutique" class="nav-link">Boutique</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+
     <!-- END nav -->
     
 
@@ -199,6 +199,7 @@
     <script src="/index/js/google-map.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   
+    @yield('script')
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>

@@ -21,18 +21,34 @@ active
       <section class="ftco-section ftco-no-pt ftco-no-pb">
         <div class="container-fluid px-md-0">
       <div class="row no-gutters">
+        @forelse ($images as $img)
         <div class="col-md-4 ftco-animate">
-          <div class="gallery img d-flex align-items-end" style="background-image: url(/index/images/gallery-6.jpg);">
-              <a href="/index/images/gallery-6.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+          <div class="gallery img d-flex align-items-end" style="background-image: url(/storage/galerie/{{$img->libelle}});">
+              <a href="/storage/galerie/{{$img->libelle}}" class="icon image-popup d-flex justify-content-center align-items-center">
                           <span class="icon-expand"></span>
                       </a>
               <div class="desc w-100 px-4">
                 <div class="text w-100 mb-3">
-                    <span>Nature</span>
+                    <span>{{$img->legende}}</span>
                 </div>
             </div>
           </div>
         </div>
+
+        @empty
+
+        <div class="col-md-12 d-flex ftco-animate" style="justify-content:center!important;">
+
+          <div class="blog-entry justify-content-end">
+            
+                <h3 class="text-muted">Rien à afficher</h3>
+  
+                 
+          </div>
+      </div>
+            
+        @endforelse
+
       </div>
     </div> 
       </section>

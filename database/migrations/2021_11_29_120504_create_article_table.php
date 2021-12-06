@@ -19,7 +19,6 @@ class CreateArticleTable extends Migration
             $table->text('contenu')->nullable();
             $table->string('banniere', 255)->nullable();
             $table->unsignedBigInteger('categorie_id')->nullable();
-            $table->unsignedBigInteger('utilisateur_id')->nullable();
             $table->timestamps();
         });
     }

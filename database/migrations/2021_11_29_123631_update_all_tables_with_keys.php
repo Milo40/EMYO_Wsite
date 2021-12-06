@@ -19,11 +19,9 @@ class UpdateAllTablesWithKeys extends Migration
 
         Schema::table('article', function (Blueprint $table) {
             $table->foreign('categorie_id')->references('id_categorie')->on('categorie');
-            $table->foreign('utilisateur_id')->references('id_utilisateur')->on('utilisateur');
         });
 
         Schema::table('vente', function (Blueprint $table) {
-            $table->foreign('utilisateur_id')->references('id_utilisateur')->on('utilisateur');
             $table->foreign('produit_id')->references('id_produit')->on('produit');
         });
 
@@ -32,7 +30,6 @@ class UpdateAllTablesWithKeys extends Migration
         });
 
         Schema::table('produit', function (Blueprint $table) {
-            $table->foreign('utilisateur_id')->references('id_utilisateur')->on('utilisateur');
         });
 
         Schema::table('utilisateur', function (Blueprint $table) {

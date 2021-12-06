@@ -9,11 +9,7 @@ class Produit extends Model
 {
     use HasFactory;
     protected $table = 'produit';
-
-    public function utilisateur(){
-        return $this->belongsToMany(Utilisateur::class);
-    }
-
+    
     public function reservation(){
         return $this->belongsTo(Reservation::class);
     }

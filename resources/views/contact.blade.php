@@ -59,13 +59,14 @@ active
                               <div class="col-md-7">
                                   <div class="contact-wrap w-100 p-md-5 p-4">
                                       <h3 class="mb-4">Formulaire</h3>
-                                      <div id="form-message-warning" class="mb-4"></div>
-                                      <form method="POST" id="contactForm" name="contactForm" class="contactForm">
-                                          <div class="row">
+                                      <div id="form-message-warning" class="mb-4">@include('status_messages')</div>
+                                      <form method="POST" action="/admin/message" id="contactForm" name="contactForm" class="contactForm">
+                                          @csrf
+                                        <div class="row">
                                               <div class="col-md-6">
                                                   <div class="form-group">
                                                       <label class="label" for="name">Nom complet</label>
-                                                      <input type="text" class="form-control" name="name" id="name" placeholder="Nom">
+                                                      <input type="text" class="form-control" name="nom" id="name" placeholder="Nom">
                                                   </div>
                                               </div>
                                               <div class="col-md-6"> 
@@ -83,7 +84,7 @@ active
                                               <div class="col-md-12">
                                                   <div class="form-group">
                                                       <label class="label" for="#">Message</label>
-                                                      <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+                                                      <textarea name="contenu" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
                                                   </div>
                                               </div>
                                               <div class="col-md-12">

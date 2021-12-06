@@ -23,7 +23,7 @@ active
       <div class="container">
           <div class="row d-flex">
               <div class="col-md-6 d-flex">
-                  <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url(/index/images/vid2.jpg);">
+                  <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url(/index/images/vid4.jpg);">
                     
                   </div>
               </div>

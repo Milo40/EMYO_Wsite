@@ -6,7 +6,7 @@
             
         @endsection
         <x-slot name="logo">
-            <center> <a href="/dashboard"><img src="/assets/images/emyo.png" alt="logo" style="width:30%;margin-bottom:-45px;"></a></center>
+            <center> <a href="/"><img src="/assets/images/emyo.png" alt="logo" style="width:30%;margin-bottom:-45px;"></a></center>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
