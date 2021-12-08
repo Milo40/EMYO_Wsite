@@ -33,10 +33,44 @@ class CategorieController extends Controller
         }
     }
 
-    public function delete_category(){
+    public function delete_category(Request $req){
+
+        $cat = $req->request->get('cat');
+        //dd($msg);
+        if(Categorie::where('id_categorie', $cat)->delete()){
+        return back()->with('success', 'Categorie Supprime !');
+        }else{
+            return back()->with('error','Echec Suppression.');
+        }
 
     }
-    public function edit_category(){
-        return view('admin/categories/edit');
+
+    public function edit_category(Request $req){
+
+        $cat = $req->request->get('cat');
+        $cat_title = $req->request->get('titre');
+        $cat_desc = $req->request->get('description');
+            try {
+                DB::table('categorie')->where('id_categorie', $cat)->update([
+                    'titre' => $cat_title,
+                    'description' => $cat_desc
+                ]);
+                return back()->with('success','Article MAJ');
+                }catch (Exception $x) {
+                return back()->with('error','Echec de la MAJ');
+            }
+        
     }
+
+    public function edit_category_view(Request $req){
+        $cat = $req->request->get('cat');
+        $categories = Categorie::where('id_categorie', $cat)->get();
+        foreach($categories as $cats){
+
+        }
+
+         /* dd($arts->id_article); */
+        return view('admin/categories/edit', compact('cats'));
+    }
+
 }

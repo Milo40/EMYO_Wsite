@@ -24,9 +24,12 @@ class ReservationController extends Controller
     public function delete_reservation(Request $req){
         $reserv = $req->request->get('reserv');
         //dd($msg);
-        Reservation::where('id_reservation', $reserv)->delete();
+        if(Reservation::where('id_reservation', $reserv)->delete()){ 
+            return back()->with('success', 'Reservation Supprimee !');
+        }else{
+            return back()->with('error', 'Echec de la suppression.');
+        }
 
-        return back()->with('success', 'Reservation Supprimee !');
     }
     public function edit_message(){
         return view('admin/reservations');

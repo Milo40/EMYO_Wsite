@@ -8,13 +8,13 @@ Ajouter un produit
 
 @section('icon')
 
-    fas fa-tshirt
+fas fa-tshirt
 
 @endsection
 
 @section('entity')
 
-    Ajouter un produit
+Ajouter un produit
 
 @endsection
 
@@ -22,24 +22,27 @@ Ajouter un produit
 
 @include('status_messages')
 
-<form class="add_product_form" method="POST" action="{{ url()->current() }}">
+<form class="add_product_form" method="POST" action="{{ url()->current() }}" enctype="multipart/form-data">
     @csrf
 
     <div class="row">
 
         <div class="col-lg-12">
             <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Produit</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Produit</h5>
                     <form class="">
-                        <div class="position-relative form-group"><label for="exampleEmail" class="">Nom</label><input name="nom" id="exampleEmail"  type="text" class="form-control"></div>
+                        <div class="position-relative form-group"><label for="exampleEmail" class="">Nom</label><input name="nom" id="exampleEmail" type="text" class="form-control"></div>
                         <div class="position-relative form-group"><label for="Text" class="">Prix</label><input name="prix" id="Text" type="text" class="form-control"></div>
                         <div class="position-relative form-group"><label for="example1" class="">Description</label><input name="description" id="example1" type="text" class="form-control">
                         </div>
-                        <div class="position-relative form-group"><label for="example2" class="">Image</label><input name="image" id="example2" type="file" class="form-control-file">
+                        <div class="position-relative form-group">
+                            <label for="image" class="">Image</label>
+                            <input type="file" name="image" id="image" class="form-control-file">
                         </div>
                         <div class="position-relative form-group"><label for="example3" class="">Reserve ?</label>
-                            
-                            <select name="reserve" id="example3"  class="form-control">
+
+                            <select name="reserve" id="example3" class="form-control">
 
                                 <option value="0">Non</option>
                                 <option value="1">Oui</option>
@@ -52,7 +55,7 @@ Ajouter un produit
                 </div>
             </div>
         </div>
-        
+
     </div>
 </form>
 

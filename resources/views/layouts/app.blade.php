@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}">
+        <!-- <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}"> -->
 
         @livewireStyles
 

@@ -28,17 +28,19 @@ class ArticleController extends Controller
     {
         $art_title = $req->request->get('titre');
         $art_desc = $req->request->get('contenu');
-        $art_banniere = $req->request->get('banniere');
+        $art_banniere = $req->file('banniere')->getClientOriginalName();
         $allow_formats = ['png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG', 'gif', 'GIF'];
         $format_check = explode(".", $art_banniere);
-        if(in_array($format_check[1], $allow_formats)){
+        if(in_array($req->file('banniere')->extension(), $allow_formats)){
         try {
             DB::table('article')->insert([
                 'titre' => $art_title,
                 'contenu' => $art_desc,
                 'banniere' => $art_banniere
             ]);
+            if($req->file('banniere')->storeAs('public/Articles_Banners', $req->file('banniere')->getClientOriginalName())){
             return back()->with('success','Article OK');
+            }
         } catch (Exception $x) {
             return back()->with('error','Echec de l\'ajout');
         }
@@ -48,11 +50,53 @@ class ArticleController extends Controller
 
     }
 
-    public function delete_article()
+    public function delete_article(Request $req)
     {
+        $art = $req->request->get('art');
+        //dd($msg);
+        if(Article::where('id_article', $art)->delete()){ 
+        return back()->with('success', 'Article Supprime !');
+        }else{
+            return back()->with('error','Echec Suppression');
+        }
     }
-    public function edit_article()
+    
+    public function edit_article_view(Request $req)
     {
-        return view('admin/articles/edit');
+        $art = $req->request->get('art');
+        $articles = Article::where('id_article', $art)->get();
+        foreach($articles as $arts){
+
+        }
+
+         /* dd($arts->id_article); */
+        return view('admin/articles/edit', compact('arts'));
+    }
+
+    public function edit_article(Request $req)
+    {
+        $art = $req->request->get('art');
+        $art_title = $req->request->get('titre');
+        $art_desc = $req->request->get('contenu');
+        $art_banniere = $req->file('banniere')->getClientOriginalName();
+        $allow_formats = ['png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG', 'gif', 'GIF'];
+        if(in_array($req->file('banniere')->extension(), $allow_formats)){
+            try {
+                DB::table('article')->where('id_article', $art)->update([
+                    'titre' => $art_title,
+                    'contenu' => $art_desc,
+                    'banniere' => $art_banniere
+                ]);
+                if($req->file('banniere')->storeAs('public/Articles_Banners', $req->file('banniere')->getClientOriginalName())){
+                return back()->with('success','Article MAJ');
+                }else{
+                    return back()->with('error','Echec de la MAJ');
+                }
+            } catch (Exception $x) {
+                return back()->with('error','Echec de la MAJ');
+            }
+        }else{
+            return back()->with('error','Le format de l\'image est pas valide.');
+        }
     }
 }

@@ -33,9 +33,12 @@ class MessageController extends Controller
     {
         $msg = $req->request->get('msg');
         //dd($msg);
-        Message::where('id_message', $msg)->delete();
 
+        if(Message::where('id_message', $msg)->delete()){
         return back()->with('success', 'Message Supprime !');
+        }else{
+            return back()->with('error','Echec Suppression');
+        }
     }
 
     public function edit_message()

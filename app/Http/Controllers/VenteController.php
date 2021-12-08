@@ -37,9 +37,11 @@ class VenteController extends Controller
     public function delete_vente(Request $req){
         $vente = $req->request->get('vente');
         //dd($msg);
-        Vente::where('id_vente', $vente)->delete();
-
+        if(Vente::where('id_vente', $vente)->delete()){
         return back()->with('success', 'Vente Supprimee !');
+        }else{
+            return back()->with('error','Echec Suppression.');
+        }
     }
     public function edit_vente(){
         return view('admin/ventes');
