@@ -65,7 +65,7 @@ Route::get('/article/{id}', function ($id) {
     return view('article',compact('article','articles'));
 });
 
-Route::get('/produits', function () {
+Route::get('/boutique', function () {
     return view('shop');
 });
 

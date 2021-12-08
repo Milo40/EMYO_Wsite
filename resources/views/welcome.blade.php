@@ -8,11 +8,11 @@
 
 
     <div class="hero-wrap js-fullheight" style="background-image:url(/index/images/plant.jpg);"
-        data-stellar-background-ratio="0.5">
+        >
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
-                data-scrollax-parent="true">
+                >
                 <div class="col-md-6 ftco-animate">
                     <h2 class="subheading"> Soyez les bienvenus chez </h2>
                     <h1>EMERGENCE YOUTH SARL </h1>
@@ -183,7 +183,7 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-md-6">
                     <h2>Contact</h2>
-                    <p>Un commentaire ? une question à propos d'un de nos produits ? alors contactez-nous </p>
+                    <p>Un commentaire ? Une question à propos d'un de nos produits ? Contactez-nous </p>
                 </div>
                 <div class="col-md-5 text-md-right">
                     <span class="contact-number">+237 654568940</span>
