@@ -36,7 +36,9 @@ class ArticleController extends Controller
             DB::table('article')->insert([
                 'titre' => $art_title,
                 'contenu' => $art_desc,
-                'banniere' => $art_banniere
+                'banniere' => $art_banniere,
+                'created_at' => now()
+                
             ]);
             if($req->file('banniere')->storeAs('public/Articles_Banners', $req->file('banniere')->getClientOriginalName())){
             return back()->with('success','Article OK');

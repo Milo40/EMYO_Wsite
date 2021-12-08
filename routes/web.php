@@ -1,14 +1,18 @@
 <?php
 
+use App\Models\Article;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\VenteController;
-use App\Http\Controllers\UtilisateurController;
-use App\Http\Controllers\ProduitController;
-use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\UtilisateurController;
+use App\Models\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,28 +31,46 @@ Les plus detaillees sont celles des administrateurs. Mais je crois que celles la
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $articles=Article::orderBy('created_at','desc')->limit(3)->get();
+    $images=Image::orderBy('created_at','desc')->limit(4)->get();
+    return view('welcome',compact('articles','images'));
 });
 
 Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/about', function () {
+Route::get('/a-propos', function () {
     return view('about');
 });
 
-Route::get('/galery', function () {
-    return view('galery');
+Route::get('/galerie', function () {
+    $images=Image::all();
+    return view('galery',compact('images'));
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+    $articles=Article::paginate(9);
+    return view('blog',compact('articles'));
 });
 
-Route::get('/article', function () {
-    return view('article');
+Route::post('/recherche', function (Request $request) {
+    $articles=Article::where('titre','LIKE',"%".$request->titre."%")->paginate(9);
+    return view('resultat',compact('articles'));
 });
+
+Route::get('/article/{id}', function ($id) {
+    $article=Article::where('id_article',$id)->first();
+    $articles=Article::orderBy('created_at','desc')->limit(3)->get();
+    return view('article',compact('article','articles'));
+});
+
+Route::get('/boutique', function () {
+    return view('shop');
+});
+
+Route::post('/admin/message', [MessageController::class, 'add_message'])->name('Ajouter de msg');
+    
 
 Route::middleware(['auth:sanctum', 'verified'])-> group(function(){
 
@@ -70,6 +92,13 @@ Route::middleware(['auth:sanctum', 'verified'])-> group(function(){
     Route::get('/admin/article/edit_article', [ArticleController::class, 'edit_article_view'])->name('Modifier un article');
     Route::put('/admin/article/{art}', [ArticleController::class, 'edit_article'])->name('Modif un article');
     Route::delete('/admin/article/{art}', [ArticleController::class, 'delete_article'])->name('Supprimer un article');
+
+
+    Route::get('/admin/image', [ImageController::class, 'img_view'])->name('Toutes les images');
+    Route::post('/admin/image/add_image', [ImageController::class, 'add_img'])->name('Ajout img');
+    Route::get('/admin/image/add_image', [ImageController::class, 'add_img_view'])->name('Vue Ajout img');
+    Route::delete('/admin/image/{img}', [ImageController::class, 'delete_img'])->name('Supprimer une image');
+
 
     Route::get('/admin/vente', [VenteController::class, 'get_ventes'])->name('Toutes les ventes');
     Route::get('/admin/vente/get/{vente}', [VenteController::class, 'get_vente'])->name('Une vente');

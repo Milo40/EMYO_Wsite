@@ -9,11 +9,6 @@ class Vente extends Model
 {
     use HasFactory;
     protected $table = 'vente';
-
-    public function utilisateur(){
-        return $this->belongsToMany(Utilisateur::class);
-    }
-
     public function produit(){
         return $this->belongsToMany(Produit::class);
     }

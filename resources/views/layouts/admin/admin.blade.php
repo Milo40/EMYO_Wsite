@@ -11,7 +11,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <link href="/assets/styles/main.css" rel="stylesheet">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
-<!--     <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}"> -->
+  <!--  <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}"> -->
     <link rel="shortcut icon" href="/assets/images/emyo.png">
     <script src="/assets/ckeditor/ckeditor.js"></script>
 </head>
@@ -33,7 +33,7 @@
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="logo text-center"><img src="/assets/images/emyo.png" alt="logo" style="width: 30%;"></div>
+                <div class="logo text-center"> <a href="/"><img src="/assets/images/emyo.png" alt="logo" style="width: 30%;"></a></div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -192,6 +192,31 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="metismenu-icon fas fa-image" style="font-size: 15px;"></i>
+                                    Images
+                                    <i class="metismenu-state-icon fas fa-angle-down caret-left"
+                                        style="font-size: 15px;"></i>
+                                </a>
+                                <ul>
+
+                                    <li>
+                                        <a href="{{ route('Vue Ajout img') }}">
+                                            <i class="metismenu-icon">
+                                            </i>Ajouter une image
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('Toutes les images') }}">
+                                            <i class="metismenu-icon">
+                                            </i>Liste d'images
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
 
 
                             <li>
