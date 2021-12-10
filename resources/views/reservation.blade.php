@@ -93,7 +93,7 @@
                             <div class="col-md-5 d-flex align-items-stretch">
                                 <div class="info-wrap  p-5 img">
 
-                                    <img src="/shop/img/test.png" alt="logo"
+                                    <img src="/shop/img/produit1.png" alt="logo"
                                     style="width:500px;text-shadow: 5px 5px 21px 4px rgba(0,0,0,0.59);">
                       </div>
                             </div>
