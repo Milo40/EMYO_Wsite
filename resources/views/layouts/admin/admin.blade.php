@@ -11,6 +11,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <link href="/assets/styles/main.css" rel="stylesheet">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/styles/custom.css') }}">
   <!--  <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}"> -->
     <link rel="shortcut icon" href="/assets/images/emyo.png">
     <script src="/assets/ckeditor/ckeditor.js"></script>

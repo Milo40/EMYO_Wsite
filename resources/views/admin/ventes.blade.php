@@ -18,6 +18,51 @@ Ventes
 
 @endsection
 
+@php($x = 0)
+@foreach($ventes as $vente_item)
+<div class="modal fade mt-5" id="check_{{$vente_item->id_vente}}" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Plus de details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container w-100">
+
+                    <div class="row w-100">
+                        <div class="col">
+                            <label for="nom" class="h4">Client</label>
+                            <input type="text" class="form-control" id="nom" value="{{ $vente_client[$x] }}" readonly>
+                        </div>
+
+                        <div class="col">
+                            <label for="prod" class="h4">Produit</label>
+                            <input type="text" class="form-control" id="prod" value="{{ $vente_produit[$x] }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row w-100 mt-2">
+                        <div class="col">
+                            <label for="day" class="h4">Date Vente</label>
+                            <input type="text" class="form-control" id="day" value="{{ $vente_item->date }}" readonly>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@php($x = $x + 1)
+@endforeach
+
 @section('content')
 
 @include('status_messages')
@@ -49,29 +94,20 @@ Ventes
                             <td>{{ $vente_item->date }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
+                                <div class="col">
+                                        <form action="#">
+                                            <input type="button" class="btn btn-sm btn-info m-1" style="width: 100%;" ref="#" data-toggle="modal" data-target="#check_{{$vente_item->id_vente}}" value="&#xf06e">
+                                        </form>
+                                    </div>
 
-                                <form action="{{ route('Supprimer une vente', ['vente'=>$vente_item->id_vente]) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <input type="hidden" name="vente" value="{{ $vente_item->id_vente }}" readonly>
-                                        <button type="submit" class="btn btn-sm btn-info m-1" style="width: 30%;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </form>
-
+                                    <div class="col">
                                     <form action="{{ route('Supprimer une vente', ['vente'=>$vente_item->id_vente]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <input type="hidden" name="vente" value="{{ $vente_item->id_vente }}" readonly>
-                                        <button type="submit" class="btn btn-sm btn-danger m-1" style="width: 30%;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
+                                        <input type="submit" class="btn btn-danger m-1" style="width: 100%;" value="&#xf146">
                                     </form>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

@@ -19,6 +19,72 @@ Reservations
 
 @endsection
 
+@php($x = 0)
+@foreach($reservs as $reserv_item)
+<div class="modal fade mt-5" id="check_{{$reserv_item->id_reservation}}" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Plus de details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container w-100">
+
+                    <div class="row w-100">
+                        <div class="col">
+                            <label for="nom" class="h4">Nom du Client [Username]</label>
+                            <input type="text" class="form-control" id="nom" value="{{ $reserv_item->nom_client }}" readonly>
+                        </div>
+
+                        <div class="col">
+                            <label for="mail" class="h4">Addr Mail Client</label>
+                            <input type="text" class="form-control" id="mail" value="{{ $reserv_item->mail_client }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row w-100 mt-2">
+                        <div class="col">
+                            <label for="number" class="h4">Numero Tel Client</label>
+                            <input type="text" class="form-control" id="number" value="{{ $reserv_item->numero_client }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row w-100 mt-2">
+                        <div class="col">
+                            <label for="product" class="h4">Produit Commandé</label>
+                            <input type="text" class="form-control" id="product" value="{{ $vente_produit[$x] }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row w-100 mt-2">
+                        <div class="col">
+                            <label for="date_dest" class="h4">Date de Livraison</label>
+                            <input type="text" class="form-control" id="date_dest" value="{{ $reserv_item->date_destination }}" readonly>
+                        </div>
+
+                        <div class="col">
+                            <label for="date_orig" class="h4">Date de la Commande</label>
+                            <input type="text" class="form-control" id="date_orig" value="{{ $reserv_item->date_source }}" readonly>
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@php($x = $x + 1)
+@endforeach
+
 @section('content')
 
 @include('status_messages')
@@ -37,8 +103,8 @@ Reservations
                             <th style="width: 10%;">Date destination</th>
                             <th style="width: 30%;">Nom client</th>
                             <th style="width: 10%;">Numéro client</th>
-                            <th style="width: 30%;">Email client</th>
-                            <th style="width: 10%;">Actions</th>
+                            <th style="width: 20%;">Email client</th>
+                            <th style="width: 20%;">Actions</th>
 
                         </tr>
                     </thead>
@@ -54,28 +120,20 @@ Reservations
                             <td>{{ $reserv_item->mail_client }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                <form action="{{ Request::url() }}" method="GET">
-                                        @method('DELETE')
-                                        @csrf
-                                        <input type="hidden" name="reserv" value="{{ $reserv_item->id_reserv }}" readonly>
-                                        <button type="submit" class="btn btn-sm btn-info m-1" style="width: 60%;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                    </form>
+                                <div class="col">
+                                        <form action="#">
+                                            <input type="button" class="btn btn-sm btn-info m-1" style="width: 100%;" ref="#" data-toggle="modal" data-target="#check_{{$reserv_item->id_reservation}}" value="&#xf06e">
+                                        </form>
+                                    </div>
 
+                                    <div class="col">
                                     <form action="{{ route('Supprimer une reservation', ['reserv'=>$reserv_item->id_reservation]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <input type="hidden" name="reserv" value="{{ $reserv_item->id_reservation }}" readonly>
-                                        <button type="submit" class="btn btn-danger m-1" style="width: 60%;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
+                                        <input type="submit" class="btn btn-danger m-1" style="width: 100%;" value="&#xf146">
                                     </form>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

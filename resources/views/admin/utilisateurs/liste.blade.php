@@ -18,6 +18,54 @@ Liste d'utilisateurs
 
 @endsection
 
+@foreach($users as $user_item)
+<div class="modal fade mt-5" id="check_{{$user_item->id_utilisateur}}" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Plus de details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container w-100">
+
+                    <div class="row w-100">
+                        <div class="col">
+                            <label for="nom" class="h4">Nom</label>
+                            <input type="text" class="form-control" id="nom" value="{{ $user_item->nom }}" readonly>
+                        </div>
+
+                        <div class="col">
+                            <label for="username" class="h4">Nom d'utilisateur</label>
+                            <input type="text" class="form-control" id="username" value="{{ $user_item->uname }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row w-100 mt-2">
+                        <div class="col">
+                            <label for="mail" class="h4">Mail</label>
+                            <input type="text" class="form-control" id="mail" value="{{ $user_item->mail }}" readonly>
+                        </div>
+
+                        <div class="col">
+                            <label for="urole" class="h4">Role</label>
+                            <input type="text" class="form-control" id="urole" value="{{ $user_item->role }}" readonly>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
 @section('content')
 
 @include('status_messages')
@@ -52,15 +100,9 @@ Liste d'utilisateurs
                             <td>
                                 <div class="container">
                                     <div class="row justify-content-md-center align-items-center no-gutters d-flex">
-                                        <div class="col-4">
-                                            <form action="{{ Request::url() }}" method="GET">
-                                                @csrf
-                                                <button class="btn btn-sm btn-info m-1" style="width: 100%;">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                        <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
+                                    <div class="col-4">
+                                            <form action="#">
+                                                <input type="button" class="btn btn-sm btn-info m-1" style="width: 100%;" ref="#" data-toggle="modal" data-target="#check_{{$user_item->id_utilisateur}}" value="&#xf06e">
                                             </form>
                                         </div>
 
@@ -68,12 +110,7 @@ Liste d'utilisateurs
                                         <form action="{{ route('Modifier un utilisateur', ['user'=>$user_item->id_utilisateur]) }}" method="GET">
                                             @csrf
                                             <input type="hidden" name="user" value="{{ $user_item->id_utilisateur }}" readonly>
-                                                <button type="submit" class="btn btn-warning m-1" style="width: 100%;">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                                                        <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
+                                            <input type="submit" class="btn btn-warning m-1" style="width: 100%;" value="&#xf044">
                                             </form>
                                         </div>
 
@@ -82,11 +119,7 @@ Liste d'utilisateurs
                                                 @method('DELETE')
                                                 @csrf
                                                 <input type="hidden" name="user" value="{{ $user_item->id_utilisateur }}" readonly>
-                                                <button type="submit" class="btn btn-danger m-1" style="width: 100%;">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
+                                                <input type="submit" class="btn btn-danger m-1" style="width: 100%;" value="&#xf146">
                                             </form>
                                         </div>
 
