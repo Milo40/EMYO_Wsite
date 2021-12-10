@@ -13,6 +13,7 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UtilisateurController;
 use App\Models\Image;
+use App\Models\Produit;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,10 +67,18 @@ Route::get('/article/{id}', function ($id) {
 });
 
 Route::get('/boutique', function () {
-    return view('shop');
+    $produits=Produit::orderBy('created_at','desc')->get();
+    return view('shop',compact('produits'));
 });
 
+Route::get('/boutique/reservation', function () {
+    return view('reservation');
+});
+
+
 Route::post('/admin/message', [MessageController::class, 'add_message'])->name('Ajouter de msg');
+
+Route::post('/admin/reservation', [ReservationController::class, 'add_reservation'])->name('Ajouter de reserv');
     
 
 Route::middleware(['auth:sanctum', 'verified'])-> group(function(){
@@ -127,7 +136,6 @@ Route::middleware(['auth:sanctum', 'verified'])-> group(function(){
     Route::get('/admin/reservation', [ReservationController::class, 'get_reservations'])->name('Toutes les reservations');
     Route::get('/admin/reservation/get/{reserv}', [ReservationController::class, 'get_reservation'])->name('Une reservation');
     Route::get('/admin/reservation/add_reservation/', [ReservationController::class, 'add_reservation_view'])->name('Ajouter une reservation');
-    Route::post('/admin/reservation', [ReservationController::class, 'add_reservation'])->name('Ajouter de reserv');
     Route::get('/admin/reservation/edit_reservation', [ReservationController::class, 'edit_reservation_view'])->name('Modifier une reservation');
     Route::put('/admin/reservation/{reserv}', [ReservationController::class, 'edit_reservation'])->name('Modif une reservation');
     Route::delete('/admin/reservation/{reserv}', [ReservationController::class, 'delete_reservation'])->name('Supprimer une reservation');
@@ -135,7 +143,6 @@ Route::middleware(['auth:sanctum', 'verified'])-> group(function(){
     Route::get('/admin/message', [MessageController::class, 'get_messages'])->name('Tous les messages');
     Route::get('/admin/message/get/{msg}', [MessageController::class, 'get_message'])->name('Un message');
     Route::get('/admin/message/add_message/', [MessageController::class, 'add_message_view'])->name('Ajouter un message');
-    Route::post('/admin/message', [MessageController::class, 'add_message'])->name('Ajouter de msg');
     Route::get('/admin/message/edit_message', [MessageController::class, 'edit_message_view'])->name('Modifier un message');
     Route::put('/admin/message/{msg}', [MessageController::class, 'edit_message'])->name('Modif un message');
     Route::delete('/admin/message/{msg}', [MessageController::class, 'delete_message'])->name('Supprimer un message');

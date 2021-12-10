@@ -292,14 +292,6 @@
 
                             </li>
 
-                            <li>
-                                <a href="{{ route('Toutes les ventes') }}">
-                                    <i class="metismenu-icon fas fa-cash-register" style="font-size: 15px;"></i>
-                                    Ventes
-                                </a>
-
-                            </li>
-
                         </ul>
                     </div>
                 </div>

@@ -7,7 +7,16 @@
 .align-items-stretch img:hover{
 
     transform: scale(1.1);
-    transition: 0.2s ease-in-out;
+    transition: 0.3s ease-in-out;
+
+}
+
+
+.align-items-stretch img{
+
+border-radius: 10px;
+height:400px;
+width:200px;
 
 }
 
@@ -31,7 +40,7 @@
                     <h2 class="subheading"> Soyez les bienvenus </h2>
                     <h1>Découvrez notre catalogue spécial CAN ! </h1>
                     
-                    <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4">Effectuer une reservation <span
+                    <p><a href="/boutique/reservation" class="btn btn-primary mr-md-4 py-2 px-4">Effectuer une reservation <span
                         class="ion-ios-arrow-forward"></span></a></p>
 
                 </div>
@@ -64,6 +73,21 @@
                 <div class="col-lg-12 services-wrap px-4">
                     <div class="carousel-seasonal owl-carousel ftco-owl">
 
+                        @forelse ($produits as $p)
+
+                        <div class="item">
+                            <div class="wrap">
+                                <div class="seasonal img d-flex align-items-center justify-content-center"
+                                    style="background-image: url(/storage/produits/{{$p->image}});">
+                                </div>
+                                <!--	<div class="text text-center px-4">
+                            <h3><a href="#">Spring</a></h3>
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        </div> -->
+                            </div>
+                        </div>
+                            
+                        @empty
 
                         <div class="item">
                             <div class="wrap">
@@ -124,6 +148,8 @@
                         </div> -->
                             </div>
                         </div>
+          @endforelse
+
 
                     </div>
                 </div>
@@ -158,6 +184,23 @@
 
     </div>
 
+    <div class="col-md-4 d-flex align-items-stretch mt-3">
+
+        <img src="/shop/img/habit4.jpg" alt="Habit 1" class="w-100">
+
+    </div>
+
+    <div class="col-md-4 d-flex align-items-stretch mt-3">
+
+        <img src="/shop/img/habit5.jpg" alt="Habit 1" class="w-100">
+
+    </div>
+
+    <div class="col-md-4 d-flex align-items-stretch mt-3">
+
+        <img src="/shop/img/habit6.jpg" alt="Habit 1" class="w-100">
+
+    </div>
 
 
 </div>

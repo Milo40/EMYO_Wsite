@@ -86,10 +86,8 @@ Liste de produits
                         <tr>
                             <th>#</th>
                             <th style="width:  20%">Nom</th>
-                            <th style="width:  20%">Prix</th>
                             <th style="width:  30%">Description</th>
                             <th style="width:  10%">Image</th>
-                            <th>Reservé ?</th>
                             <th style="width:  11%">Actions</th>
 
                         </tr>
@@ -100,10 +98,8 @@ Liste de produits
                         <tr>
                             <th scope="row">{{ $prod_item->id_produit }}</th>
                             <td>{{ $prod_item->nom }}</td>
-                            <td>{{ $prod_item->prix }}</td>
                             <td>{{ $prod_item->description }}</td>
                             <td>{{ $prod_item->image }}</td>
-                            <td>{{ $prod_item->is_reserve }}</td>
                             <td>
                                 <div class="container">
                                     <div class="row justify-content-md-center align-items-center no-gutters d-flex">

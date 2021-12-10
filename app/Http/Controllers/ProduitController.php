@@ -43,7 +43,7 @@ class ProduitController extends Controller
                 'image' => $prod_image,
                 'is_reserve' => $prod_state
             ]);
-            if($req->file('image')->storeAs('public/Products_Images', $req->file('image')->getClientOriginalName())){
+            if($req->file('image')->storeAs('public/produits', $req->file('image')->getClientOriginalName())){
                 return back()->with('success','Produit OK');
                 }
         } catch (Exception $x) {
@@ -84,7 +84,7 @@ class ProduitController extends Controller
                     'image' => $prod_image,
                     'is_reserve' => $prod_state
                 ]);
-                if($req->file('image')->storeAs('public/Products_Images', $req->file('image')->getClientOriginalName())){
+                if($req->file('image')->storeAs('public/produits', $req->file('image')->getClientOriginalName())){
                 return back()->with('success','Produit MAJ');
                 }else{
                     return back()->with('error','Echec de la MAJ');

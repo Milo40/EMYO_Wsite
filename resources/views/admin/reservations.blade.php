@@ -99,12 +99,12 @@ Reservations
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
-                            <th style="width: 10%;">Date source</th>
-                            <th style="width: 10%;">Date destination</th>
+                            <th style="width: 10%;">Date</th>
                             <th style="width: 30%;">Nom client</th>
                             <th style="width: 10%;">Numéro client</th>
-                            <th style="width: 20%;">Email client</th>
-                            <th style="width: 20%;">Actions</th>
+                            <th style="width: 30%;">Email client</th>
+                            <th style="width: 30%;">Produit souhaité</th>
+                            <th style="width: 10%;">Actions</th>
 
                         </tr>
                     </thead>
@@ -113,11 +113,11 @@ Reservations
                         @foreach($reservs as $reserv_item)
                         <tr>
                             <th scope="row">{{ $reserv_item->id_reservation }}</th>
-                            <td>{{ $reserv_item->date_source }}</td>
-                            <td>{{ $reserv_item->date_destination }}</td>
+                            <td>{{ $reserv_item->created_at }}</td>
                             <td>{{ $reserv_item->nom_client }}</td>
                             <td>{{ $reserv_item->numero_client }}</td>
                             <td>{{ $reserv_item->mail_client }}</td>
+                            <td>{{ $reserv_item->preference_client }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                 <div class="col">
