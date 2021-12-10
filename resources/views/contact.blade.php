@@ -58,7 +58,7 @@ active
                           <div class="row no-gutters">
                               <div class="col-md-7">
                                   <div class="contact-wrap w-100 p-md-5 p-4">
-                                      <h3 class="mb-4">Formulaire</h3>
+                                      <h3 class="mb-4">Formulaire de contact</h3>
                                       <div id="form-message-warning" class="mb-4">@include('status_messages')</div>
                                       <form method="POST" action="/admin/message" id="contactForm" name="contactForm" class="contactForm">
                                           @csrf
@@ -66,25 +66,25 @@ active
                                               <div class="col-md-6">
                                                   <div class="form-group">
                                                       <label class="label" for="name">Nom complet</label>
-                                                      <input type="text" class="form-control" name="nom" id="name" placeholder="Nom">
+                                                      <input type="text" class="form-control" name="nom" id="name" placeholder="Nom" required>
                                                   </div>
                                               </div>
                                               <div class="col-md-6"> 
                                                   <div class="form-group">
                                                       <label class="label" for="email">Email</label>
-                                                      <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                                      <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                                                   </div>
                                               </div>
                                               <div class="col-md-12">
                                                   <div class="form-group">
                                                       <label class="label" for="subject">Objet</label>
-                                                      <input type="text" class="form-control" name="objet" id="subject" placeholder="Objet">
+                                                      <input type="text" class="form-control" name="objet" id="subject" placeholder="Objet" required>
                                                   </div>
                                               </div>
                                               <div class="col-md-12">
                                                   <div class="form-group">
                                                       <label class="label" for="#">Message</label>
-                                                      <textarea name="contenu" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+                                                      <textarea name="contenu" class="form-control" id="message" cols="30" rows="4" placeholder="Message" required></textarea>
                                                   </div>
                                               </div>
                                               <div class="col-md-12">
@@ -113,6 +113,6 @@ active
 
 @section('title')
 
-Formulaie de contact
+Formulaire de contact
     
 @endsection

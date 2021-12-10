@@ -16,10 +16,8 @@ class CreateProduitTable extends Migration
         Schema::create('produit', function (Blueprint $table) {
             $table->unsignedBigInteger('id_produit')->autoIncrement();
             $table->string('nom', 255)->nullable();
-            $table->integer('prix')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('is_reserve')->nullable()->default(false);
             $table->timestamps();
         });
     }

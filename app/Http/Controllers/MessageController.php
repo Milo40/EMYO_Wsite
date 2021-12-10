@@ -28,6 +28,13 @@ class MessageController extends Controller
 
     public function add_message(Request $request)
     {
+        $this->validate($request, [
+            'nom' => 'required',
+            'email' => 'required|email',
+            'objet' => 'required',
+            'contenu' => 'required|max:250',
+        ]);
+
         $nom = $request->get('nom');
         $email = $request->get('email');
         $objet = $request->get('objet');

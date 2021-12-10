@@ -21,20 +21,12 @@ class UpdateAllTablesWithKeys extends Migration
             $table->foreign('categorie_id')->references('id_categorie')->on('categorie');
         });
 
-        Schema::table('vente', function (Blueprint $table) {
-            $table->foreign('produit_id')->references('id_produit')->on('produit');
-        });
-
         Schema::table('reservation', function (Blueprint $table) {
-            $table->foreign('produit_id')->references('id_produit')->on('produit');
         });
 
         Schema::table('produit', function (Blueprint $table) {
         });
 
-        Schema::table('utilisateur', function (Blueprint $table) {
-
-        });
 
         Schema::table('message', function (Blueprint $table) {
 
